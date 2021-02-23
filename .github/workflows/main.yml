@@ -1,12 +1,14 @@
-name: TY_pan-daily-task
+name: 天翼云盘签到
 
 on: 
-  push:
+  workflow_dispatch:
   schedule:
     - cron: '22 22 * * *'
+  watch:
+        types: [started]
 
 jobs:
-  run-TY_pan-tool:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

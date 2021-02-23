@@ -13,7 +13,7 @@ corpsecret=os.environ['CORPSECRET']
 #程序休眠时间
 sleep_time=random.randint(2,11)
 # 初始化日志
-sio = StringIO('天翼云盘签到日志\n\n')
+sio = StringIO('天翼云盘签到\n\n')
 sio.seek(0, 2)  # 将读写位置移动到结尾
 tz = pytz.timezone('Asia/Shanghai')
 nowtime = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
@@ -34,7 +34,6 @@ def send_message(message):
     data = {"touser":'@all', "msgtype": "text", "agentid": agentid, "text": {"content": message}, "safe": 0}
     data = json.dumps(data, ensure_ascii=False)
     r = requests.post(url=url, data=data.encode("utf-8").decode("latin1"))
-    return r.json()
 
 def main(arg1,arg2):
     if(username == "" or password == ""):
