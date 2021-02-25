@@ -11,7 +11,7 @@ agentid=os.environ['AGENTID']
 corpsecret=os.environ['CORPSECRET']
 
 #程序休眠时间
-sleep_time=random.randint(2,11)
+sleep_time=random.randint(11,22)
 # 初始化日志
 sio = StringIO('天翼云盘签到\n\n')
 sio.seek(0, 2)  # 将读写位置移动到结尾
@@ -19,7 +19,7 @@ tz = pytz.timezone('Asia/Shanghai')
 nowtime = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
 sio.write("签到时间："+nowtime+'\n\n')
 sio.write('休眠时间：')
-sio.write(str(sleep_time)+'分钟')
+sio.write(str(sleep_time)+'秒')
 sio.write('\n\n')
 
 def get_token():
@@ -191,11 +191,12 @@ def login(username, password):
 def pushWechat(desp):
     if '失败' in desp :
         desp='天翼云盘签到失败！\n\n'
-    desp+='From  '+str(username)[-4:]     
+    desp+='From  '+str(username)[-4:]
+    time.sleep(2) #延迟2秒推送    
     send_message(desp)
 
 if __name__ == "__main__":
     arg1 = 0
     arg2 = 0
-    time.sleep(sleep_time*60)
+    time.sleep(sleep_time)
     main(arg1,arg2)
