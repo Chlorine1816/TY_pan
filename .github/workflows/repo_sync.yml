@@ -22,7 +22,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/BlueskyClouds/My-Actions.git"
+          source_repo: "https://github.com/Chlorine1816/TY_pan.git"
           source_branch: "master"
           destination_branch: "master"
           github_token: ${{ secrets.PAT || github.event.client_payload.PAT }}
